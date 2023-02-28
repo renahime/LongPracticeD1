@@ -97,6 +97,31 @@ app.get('/songs/:songId', (req,res) => {
   res.json(getSongBySongId(req.params.songId));
 })
 
+app.post("/albums/:albumId/songs", (req, res)=>{
+  res.status(201);
+  res.json(addSongByAlbumId(req.params.albumId, req.body));
+})
+
+app.get("/artists/:artistId/songs", (req,res)=>{
+  res.json(getSongsByArtistId(req.params.artistId))
+})
+
+app.get("/albums/:albumId/songs", (req,res)=>{
+  res.json(getSongsByAlbumId(req.params.albumId));
+})
+
+app.put("/songs/:songId", (req,res)=>{
+  res.json(editSongBySongId(req.params.songId, req.body))
+})
+app.patch("/songs/:songId", (req,res)=>{
+  res.json(editSongBySongId(req.params.songId, req.body))
+})
+app.delete("/songs/:songId", (req,res)=>{
+  deleteSongBySongId(req.params.songId);
+  res.json({message: "Successfully deleted"});
+})
+
+
 
 
 
